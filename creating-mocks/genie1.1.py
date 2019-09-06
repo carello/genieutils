@@ -33,12 +33,22 @@ devices:
 from collections import defaultdict
 
 dyn_lists = defaultdict(list)
+
+# Update this list for your topology
 device_list = ['rtr1', 'rtr2', 'sw1', 'sw2', 'sw3']
+
+# Update this list add/delete etc.. to create
 rev_list = ['normal', 'break1']
+
+# Update this to point to your base testbed (I used VIRL to create this)
 testbed = 'cp-testbeds/default_testbed.yaml'
+
+# Update this directories to suite your needs.
 output_location = 'cp-snapshot'
 record_location = 'cp-record-dir'
 mock_location = 'cp-mock'
+
+
 cmd0 = "genie learn all"
 cmd1 = "python -m unicon.playback.mock"
 
@@ -87,5 +97,5 @@ def make_recordings(res1, res2):
 
 
 result1, result2 = create_learnt()
-display(result1, result2)
+#display(result1, result2)
 make_recordings(result1, result2)
