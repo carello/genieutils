@@ -72,3 +72,4 @@ drone/
 gogs/
 .DS_Store
 archive/
+.idea/
