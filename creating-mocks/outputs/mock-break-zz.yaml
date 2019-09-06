@@ -1,7 +1,7 @@
 testbed:
   name: cp-mock-normal
 
-devices:    
+devices:
 
   sw1:
     alias: sw1
