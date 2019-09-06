@@ -1,0 +1,299 @@
+#############
+Step1: NORMAL
+
+# Learn op and config states. Note exclude FW .eg --devices rtr1 rtr2 ... sw5
+genie learn all --testbed-file cp-testbeds/default_testbed.yaml --output cp-snapshot/normal --record cp-record-dir/normal
+
+# Create media content per device
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/rtr1 --output cp-mock/normal/rtr1/rtr1-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/rtr2 --output cp-mock/normal/rtr2/rtr2-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/rtr3 --output cp-mock/normal/rtr3/rtr3-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw1 --output cp-mock/normal/sw1/sw1-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw2 --output cp-mock/normal/sw2/sw2-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw3 --output cp-mock/normal/sw3/sw3-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw4 --output cp-mock/normal/sw4/sw4-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw5 --output cp-mock/normal/sw5/sw5-normal.yaml
+
+# Try it
+mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr1 --state connect
+
+
+#############
+Step2: BREAK1
+
+# Learn op and config states. Note exclude FW .eg --devices rtr1 rtr2 ... sw5
+genie learn all --testbed-file cp-testbeds/default_testbed.yaml --output cp-snapshot/break1 --record cp-record-dir/break1
+
+# Create media content per device
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/rtr1 --output cp-mock/break1/rtr1/rtr1-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/rtr2 --output cp-mock/break1/rtr2/rtr2-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/rtr3 --output cp-mock/break1/rtr3/rtr3-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw1 --output cp-mock/break1/sw1/sw1-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw2 --output cp-mock/break1/sw2/sw2-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw3 --output cp-mock/break1/sw3/sw3-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw4 --output cp-mock/break1/sw4/sw4-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw5 --output cp-mock/break1/sw5/sw5-break1.yaml
+
+# Try it
+mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/rtr1 --state connect
+
+###########
+Step 3: create testbeds for all (normal, break(x))
+# Example for cp-testbeds/mock_normal_tb.yaml
+
+testbed:
+  name: cp-mock-normal
+
+devices:
+
+  sw2:
+    alias: sw2
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw2 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw5:
+    alias: sw5
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw5 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr1:
+    alias: rtr1
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr1 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw4:
+    alias: sw4
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw4 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw3:
+    alias: sw3
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw3 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr2:
+    alias: rtr2
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr2 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw1:
+    alias: sw1
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw1 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr3:
+    alias: rtr3
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr3 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+
+#### Example for cp-testbeds/mock_break1_tb.yaml
+
+testbed:
+  name: cp-mock-break1
+
+devices:
+
+  sw2:
+    alias: sw2
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw2 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw5:
+    alias: sw5
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw5 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr1:
+    alias: rtr1
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/rtr1 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw4:
+    alias: sw4
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw4 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw3:
+    alias: sw3
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw3 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr2:
+    alias: rtr2
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/rtr2 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  sw1:
+    alias: sw1
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw1 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+  rtr3:
+    alias: rtr3
+    os: iosxe
+    type: IOSv
+    connections:
+      defaults:
+        class: unicon.Unicon
+      mock:
+        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/rtr3 --state connect
+        protocol: unknown
+
+    custom:
+      abstraction:
+        order: [os, type]
+
+
+######
+# Step 4:  Run learning per labs etc...

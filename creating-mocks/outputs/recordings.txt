@@ -1,0 +1,13 @@
+genie learn all --testbed-file cp-testbeds/default_testbed.yaml --output cp-snapshot/normal --record normal/cp-record-dir
+genie learn all --testbed-file cp-testbeds/default_testbed.yaml --output cp-snapshot/break1 --record break1/cp-record-dir
+
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/rtr1 --output cp-mock/normal/rtr1/rtr1-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/rtr2 --output cp-mock/normal/rtr2/rtr2-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw1 --output cp-mock/normal/sw1/sw1-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw2 --output cp-mock/normal/sw2/sw2-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/normal/sw3 --output cp-mock/normal/sw3/sw3-normal.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/rtr1 --output cp-mock/break1/rtr1/rtr1-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/rtr2 --output cp-mock/break1/rtr2/rtr2-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw1 --output cp-mock/break1/sw1/sw1-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw2 --output cp-mock/break1/sw2/sw2-break1.yaml
+python -m unicon.playback.mock --recorded-data cp-record-dir/break1/sw3 --output cp-mock/break1/sw3/sw3-break1.yaml

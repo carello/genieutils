@@ -1,0 +1,5 @@
+DEVICE,ALIAS,OS,TYPE,CLASS,COMMAND,PROTOCOL,ORDER
+sw1,sw1,iosxe,IOSv,unicon.Unicon,mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw1 --state connect,unknown,"[os, type]"
+rtr1,rtr1,iosxe,IOSv,unicon.Unicon,mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr1 --state connect,unknown,"[os, type]"
+sw2,sw2,iosxe,IOSv,unicon.Unicon,mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/sw2 --state connect,unknown,"[os, type]"
+rtr2,rtr2,iosxe,IOSv,unicon.Unicon,mock_device_cli --os iosxe --mock_data_dir cp-mock/normal/rtr2 --state connect,unknown,"[os, type]"
