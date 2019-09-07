@@ -37,22 +37,21 @@ dyn_lists = defaultdict(list)
 # Update this list for your topology
 device_list = ['rtr1', 'rtr2', 'sw1', 'sw2', 'sw3']
 
-# Update this list add/delete etc.. to create
+# Update this list - add/delete etc.. to create
 rev_list = ['normal', 'break1']
 
-# Update this to point to your base testbed (I used VIRL to create this)
+# Update to point to your base testbed (I used VIRL to create this)
 testbed = 'cp-testbeds/default_testbed.yaml'
 
-# Update this directories to suite your needs.
+# Update these directories to suite your needs.
 output_location = 'cp-snapshot'
 record_location = 'cp-record-dir'
 mock_location = 'cp-mock'
+recordings = "outputs/recordings.txt"
 
 
 cmd0 = "genie learn all"
 cmd1 = "python -m unicon.playback.mock"
-
-recordings = "outputs/recordings.txt"
 
 
 def create_learnt():

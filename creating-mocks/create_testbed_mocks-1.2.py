@@ -7,6 +7,7 @@ from jinja2 import FileSystemLoader
 
 j2_env = Environment(loader=FileSystemLoader('templates'))
 
+# Update name per your topology: e.g., normal, break1, break2 etc...
 name = "cp-mock-normal"
 
 # Edit this to point to your .csv file
