@@ -24,23 +24,25 @@ header = (tmpl_0.render(
     NAME=name
 ))
 
-with open(mock_file, 'w') as fh:
-    fh.write(header)
 
-with open(csv_src, newline='') as f:
-    reader = csv.DictReader(f)
-    for r in reader:
-        info = (r['DEVICE'], r['ALIAS'], r['OS'], r['TYPE'], r['CLASS'], r['COMMAND'], r['PROTOCOL'], r['ORDER'])
-        content = (tmpl_A.render(
-            DEVICE=info[0],
-            ALIAS=info[1],
-            OS=info[2],
-            TYPE=info[3],
-            CLASS=info[4],
-            COMMAND=info[5],
-            PROTOCOL=info[6],
-            ORDER=info[7]
-        ))
+if __name__ == '__main__':
+    with open(mock_file, 'w') as fh:
+        fh.write(header)
 
-        with open(mock_file, 'a') as fw:
-            fw.write(content)
+    with open(csv_src, newline='') as f:
+        reader = csv.DictReader(f)
+        for r in reader:
+            info = (r['DEVICE'], r['ALIAS'], r['OS'], r['TYPE'], r['CLASS'], r['COMMAND'], r['PROTOCOL'], r['ORDER'])
+            content = (tmpl_A.render(
+                DEVICE=info[0],
+                ALIAS=info[1],
+                OS=info[2],
+                TYPE=info[3],
+                CLASS=info[4],
+                COMMAND=info[5],
+                PROTOCOL=info[6],
+                ORDER=info[7]
+            ))
+
+            with open(mock_file, 'a') as fw:
+                fw.write(content)
