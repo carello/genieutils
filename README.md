@@ -15,6 +15,8 @@ Referencing [DEVNET lab](https://github.com/hpreston/netdevops_demos/tree/master
 
 The script `create_testbed_mocks-1.2.py` builds the testbeds yaml files after the recordings are built that you can use for your mocked environment.
 
+For reference the `outputs` directory holds samples from the script outputs.
+
 ### Requirements
 	
 * Python 3
