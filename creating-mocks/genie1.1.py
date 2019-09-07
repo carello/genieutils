@@ -2,45 +2,20 @@
 
 
 """
-# This script prepares files for Genie. Once these are created, user needs to create a
-# "cp-testbeds/mock_break(x)_testbed.yaml" file to run the demo
-
-# Example for cp-testbeds/mock_break1_tb.yaml
-
-testbed:
-  name: cp-mock-break1
-
-devices:
-
-  sw2:
-    alias: sw2
-    os: iosxe
-    type: IOSv
-    connections:
-      defaults:
-        class: unicon.Unicon
-      mock:
-        command: mock_device_cli --os iosxe --mock_data_dir cp-mock/break1/sw2 --state connect
-        protocol: unknown
-
-    custom:
-      abstraction:
-        order: [os, type]
-
-# Run demos per github.com/carello/netdevops_demos/genie-cli-1/
+This script prepares files to create mock devices. Once these are created, user needs to create a
+testbed.yaml file. See src directory for examples.
 """
 
 from collections import defaultdict
 
-dyn_lists = defaultdict(list)
-
+# BEGINNING OF USER UPDATE SECTION
 # Update this list for your topology
-device_list = ['rtr1', 'rtr2', 'sw1', 'sw2', 'sw3']
+device_list = ['rtr1', 'sw1', 'sw2']
 
-# Update this list - add/delete etc.. to create
-rev_list = ['normal', 'break1']
+# Update this list; add/delete etc.. to create
+rev_list = ['normal', 'break1', 'brk2']
 
-# Update to point to your base testbed (I used VIRL to create this)
+# Update to point to your base testbed
 testbed = 'cp-testbeds/default_testbed.yaml'
 
 # Update these directories to suit your needs.
@@ -48,7 +23,9 @@ output_location = 'cp-snapshot'
 record_location = 'cp-record-dir'
 mock_location = 'cp-mock'
 recordings = "outputs/recordings.txt"
+# END OF USER UPDATE SECTION
 
+dyn_lists = defaultdict(list)
 
 cmd0 = "genie learn all"
 cmd1 = "python -m unicon.playback.mock"
@@ -68,11 +45,15 @@ def create_learnt():
     return do_learn_list, dyn_lists
 
 
+# Use this function to test output to your screen
+# Be careful this doesn't actually run the commands (if that isn't the intent)
 def display(res1, res2):
-    # Consider writing output to a file for execution
+    count = 0
     for r in res1:
         print(r)
-    print()
+        count += 1
+        if count == len(res1):
+            print()
 
     for k, v in res2.items():
         for x in range(len(v)):
@@ -81,12 +62,13 @@ def display(res1, res2):
 
 
 def make_recordings(res1, res2):
+    count = 0
     for r1 in res1:
         with open(recordings, 'a') as rec:
             rec.write(r1 + '\n')
-
-    with open(recordings, 'a') as rec:
-        rec.write('\n')
+            count += 1
+            if count == len(res1):
+                rec.write('\n')
 
     for k, v in res2.items():
         for x in range(len(v)):
@@ -95,6 +77,7 @@ def make_recordings(res1, res2):
     return
 
 
-result1, result2 = create_learnt()
-#display(result1, result2)
-make_recordings(result1, result2)
+if __name__ == '__main__':
+    result1, result2 = create_learnt()
+    #display(result1, result2)
+    make_recordings(result1, result2)
