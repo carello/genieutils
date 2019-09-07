@@ -7,7 +7,7 @@
 
 Genie provides a very powerful ability to create mock devices so that you can run test without physical infrastructure. Quite often there's a lot of files that are generated during the mock creation process. The utilities in this repo helps build the mock files.
 
-Referencing Hank Preston's [DEVNET tutorial](https://github.com/hpreston/netdevops_demos/tree/master/genie-cli-1). The repo tutorial leverages the capabilities of Genie to use a mock device without the need to access physical infrastructure. More information can be found [here.](https://pubhub.devnetcloud.com/media/pyats-packages/docs/unicon/playback/index.html)
+Referencing Hank Preston's [DEVNET tutorial](https://github.com/hpreston/netdevops_demos/tree/master/genie-cli-1). The repo tutorial leverages the capabilities of Genie to use a mock device without the need to access physical infrastructure. More information can be found referencing the [pyATS docs.](https://pubhub.devnetcloud.com/media/pyats-packages/docs/unicon/playback/index.html)
 
 
 
