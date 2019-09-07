@@ -43,7 +43,7 @@ rev_list = ['normal', 'break1']
 # Update to point to your base testbed (I used VIRL to create this)
 testbed = 'cp-testbeds/default_testbed.yaml'
 
-# Update these directories to suite your needs.
+# Update these directories to suit your needs.
 output_location = 'cp-snapshot'
 record_location = 'cp-record-dir'
 mock_location = 'cp-mock'

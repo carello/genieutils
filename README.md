@@ -15,6 +15,13 @@ Referencing [DEVNET lab](https://github.com/hpreston/netdevops_demos/tree/master
 
 The script `create_testbed_mocks-1.2.py` builds the testbeds yaml files after the recordings are built that you can use for your mocked environment.
 
+### Requirements
+	
+* Python 3
+* I suggest (as a best practice) running in a virtual environment.
+* run `pip install -r requirements.txt`
+
+
 ### General Procedure
 * Build a topology in VIRL
 * Run `virl auto generate pyats` to create the connectivity testbed yaml file.
