@@ -19,10 +19,7 @@ mock_file = "outputs/mock-break-x.yaml"
 
 tmpl_0 = j2_env.get_template('tmpl_0.j2')
 tmpl_A = j2_env.get_template('tmpl_A.j2')
-
-header = (tmpl_0.render(
-    NAME=name
-))
+header = (tmpl_0.render(NAME=name))
 
 
 if __name__ == '__main__':
