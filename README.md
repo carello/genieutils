@@ -1,4 +1,4 @@
-## pyATS Genie CLI Tools to Create Mocks
+## pyATS/Genie CLI Tools to Help Create Mock Devices
 
 ### v1.0
 
