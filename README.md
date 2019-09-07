@@ -23,6 +23,6 @@ The script `create_testbed_mocks-1.2.py` builds the testbeds yaml files after th
 * Next, edit the excel sheet in the `src` directory for your topology; save a `.csv` file in MS-DOS format. Edit the `create_testbed_mocks-1.2.py` to point to these files.
 * Refer back to the DevNet lab on how to use.
 
-Note: The jinja2 templates are pretty simple and not very robust. There's probably a better way to do this, but this was my first attempt using jinja2. The templates are build to ouput the proper format including spaces and line returns. If you edit these template files, check your yaml output.
+Note: The jinja2 templates are pretty rudimentary; there's probably better ways to do this... The templates are build to output the proper yaml format, including spaces and line returns. If you edit these template files, please check your yaml output.
 
 
