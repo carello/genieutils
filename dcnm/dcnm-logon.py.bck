@@ -1,0 +1,24 @@
+import requests
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+url = "https://10.18.190.94/rest/logon"
+
+payload = "{\n\t'expirationTime': 0\n}"
+headers = {
+    'Content-Type': "application/json",
+    'Accept': "application/json",
+    'Authorization': "Basic ZGVtb3VzZXI6ZGVtb0RDTk0xMjM=",
+    'User-Agent': "PostmanRuntime/7.15.2",
+    'Cache-Control': "no-cache",
+    'Postman-Token': "fec090b0-7e72-4cc8-b76e-369b362bc7b9,04c3015f-44e6-4754-8484-312539435009",
+    'Host': "10.18.190.94",
+    'Accept-Encoding': "gzip, deflate",
+    'Content-Length': "24",
+    'Connection': "keep-alive",
+    'cache-control': "no-cache"
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers, verify=False)
+
+print(response.text)

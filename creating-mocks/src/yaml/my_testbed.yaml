@@ -1,0 +1,46 @@
+devices:
+  R1:
+    connections:
+      cli:
+        ip: 172.25.101.1
+        port: 17013
+        protocol: ssh
+    credentials:
+      default:
+        password: cisco
+        username: admin
+      enable:
+        password: cisco
+    os: iosxe
+    platform: ask1k
+    type: iosxe
+  R2:
+    connections:
+      cli:
+        ip: 172.25.101.2
+        port: 17014
+        protocol: ssh
+    credentials:
+      default:
+        password: cisco
+        username: admin
+      enable:
+        password: cisco
+    os: iosxe
+    platform: iosxrv
+    type: iosxe
+  R3:
+    connections:
+      cli:
+        ip: 172.25.101.3
+        port: 17015
+        protocol: ssh
+    credentials:
+      default:
+        password: cisco
+        username: admin
+      enable:
+        password: cisco
+    os: iosxe
+    platform: n9kv
+    type: iosxe

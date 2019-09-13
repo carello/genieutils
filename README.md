@@ -11,7 +11,7 @@ Referencing Hank Preston's [DEVNET tutorial](https://github.com/hpreston/netdevo
 
 
 
-`Genie1.1.py` creates the commands to build the recordings. You'll need to update the __device_list__ in the python file for your topology. You'll also need a base __testbed.yaml__ file. I used VIRL to create my topology. VIRL can auto generate a testbed.yaml file; running `virl generate pyats`. If you don't use VIRL, you'll need to create this testbed. I've provided an example output from VIRL in the `cp-testbeds` directory.
+`Genie1.1.py` creates the commands to build the recordings. You'll need to update the __device_list__ in the python file for your topology. You'll also need a base __testbed.yaml__ file. I used VIRL to create my topology. VIRL can auto generate a testbed.yaml file; running `virl generate pyats`. If you don't use VIRL, you'll need to create this testbed. See the [pyATS docs](https://pubhub.devnetcloud.com/media/pyats-getting-started/docs/quickstart/manageconnections.html#) on how to do this. I've provided an example output from VIRL in the `cp-testbeds` directory.
 
 The script `create_testbed_mocks-1.2.py` builds the testbeds yaml files after the recordings are built that you can use for your mocked environment.
 

@@ -1,0 +1,2 @@
+
+curl -k -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Basic ZGVtb3VzZXI6ZGVtb0RDTk0xMjM=' -d '{expirationTime: 0}' 'https://10.18.190.94/rest/logon'
